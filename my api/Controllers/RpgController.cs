@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using my_api.Services;
 
 namespace my_api.Controllers
 {
@@ -11,12 +12,19 @@ namespace my_api.Controllers
     [ApiController]
     public class RpgController : ControllerBase
     {
+        private RpgService _service;
+
+        public RpgController() //建構方式
+        {
+            _service = new RpgService();
+        }
         [HttpGet]
-        public Rpg Get()
+        [Route(template:"{id}")]
+        public Rpg Get(int id)
         {
             Rpg result = null;
 
-            result = new Rpg() { id = 0, name = "boss", lv = 200 };
+            result = _service.Get(id);
 
             return result;
         }
