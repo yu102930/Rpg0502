@@ -16,7 +16,7 @@ namespace my_api.Controllers
         {
             Rpg result = null;
 
-            result = new Rpg() { id = 0, name = "boss", li = 200 };
+            result = new Rpg() { id = 0, name = "boss", lv = 200 };
 
             return result;
         }
